@@ -1,2 +1,14 @@
 <h1>Stocking</h1>
-<p>I can make you rich! Just follow me!</p>
+
+<%= form_tag root_path, :method =>'POST' do %>
+    <%= text_field_tag 'ticker', nil, placeholder: "Enter Ticker Symbol", size: 50%>
+    <%= submit_tag 'Lookup'%>
+<% end %>
+</br>
+<% if @stock %>
+    <img src="<%= @logo.url %>"></br>
+    Company: <%= @stock.company_name %></br>
+    Latest Price: <%= @stock.latest_price %></br>
+<% elsif @nothing %>
+    <%= @nothing %>
+<% end%>
